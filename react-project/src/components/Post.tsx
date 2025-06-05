@@ -1,3 +1,5 @@
+import styles from "./Post.module.css";
+
 interface PostProps {
   author: string;
   body: string;
@@ -5,10 +7,11 @@ interface PostProps {
 
 function Post(props: PostProps) {
   return (
-    <div>
-      <p>{props.author}</p>
-      <p>{props.body}</p>
+    <div className={styles.post}>
+      <p className={styles.author}>{props.author}</p>
+      <p className={styles.body}>{props.body}</p>
     </div>
   );
 }
+
 export default Post;
