@@ -1,14 +1,8 @@
-import { useState } from "react";
 import "./App.css";
+import Post from "./components/Post";
 
 function App() {
-  return (
-    <>
-      <div>
-        <span>Hello</span>
-      </div>
-    </>
-  );
+  return <Post />;
 }
 
 export default App;
