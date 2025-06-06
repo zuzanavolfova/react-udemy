@@ -4,8 +4,12 @@ import Modal from "./Modal.tsx";
 import styles from "./PostList.module.css";
 import { useState } from "react";
 
-function PostList() {
-  const [modalIsVisible, setModalIsVisible] = useState(true);
+interface PostListProps {
+  isPosting: boolean;
+  onStopPosting: () => void;
+}
+
+function PostList({ isPosting, onStopPosting }: PostListProps) {
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredName, setEnteredName] = useState("");
 
