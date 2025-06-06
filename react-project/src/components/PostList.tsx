@@ -23,14 +23,14 @@ function PostList() {
 
   return (
     <>
-      {modalIsVisible ? (
+      {modalIsVisible && (
         <Modal onClose={hideModalHandler}>
           <NewPost
             onBodyChange={changeBodyHandler}
             onNameChange={changeNameHandler}
           />
         </Modal>
-      ) : null}
+      )}
       <ul className={styles.posts}>
         <Post author={enteredName} body={enteredBody} />
       </ul>
