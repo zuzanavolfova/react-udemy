@@ -21,14 +21,10 @@ function PostList({ isPosting, onStopPosting }: PostListProps) {
     setEnteredName(event.target.value);
   }
 
-  function hideModalHandler() {
-    setModalIsVisible(false);
-  }
-
   return (
     <>
-      {modalIsVisible && (
-        <Modal onClose={hideModalHandler}>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
           <NewPost
             onBodyChange={changeBodyHandler}
             onNameChange={changeNameHandler}
