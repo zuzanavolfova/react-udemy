@@ -16,12 +16,15 @@ interface PostData {
 
 function PostList({ isPosting, onStopPosting }: PostListProps) {
   const [posts, setPosts] = useState<PostData[]>([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     async function fetchPost() {
+      setIsFetching(true);
       const response = await fetch("http://local8080/posts");
       const resData = await response.json();
       setPosts(resData.posts);
+      setIsFetching(false);
     }
     fetchPost();
   }, []);
@@ -44,17 +47,22 @@ function PostList({ isPosting, onStopPosting }: PostListProps) {
           <NewPost onCancel={onStopPosting} onAddPost={addPostsHandler} />
         </Modal>
       )}
-      {posts.length > 0 && (
+      {!isFetching && posts.length > 0 && (
         <ul className={styles.posts}>
           {posts.map((post) => (
             <Post author={post.author} key={post.body} body={post.body} />
           ))}
         </ul>
       )}
-      {posts.length === 0 && (
+      {!isFetching && posts.length === 0 && (
         <div style={{ textAlign: "center", color: "white" }}>
           <h2>The are no posts yet</h2>
           <p>Start adding some</p>
+        </div>
+      )}
+      {isFetching && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <p>Loading...</p>{" "}
         </div>
       )}
     </>
