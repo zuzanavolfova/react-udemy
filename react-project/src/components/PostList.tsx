@@ -1,5 +1,7 @@
 import NewPost from "./NewPost.tsx";
 import Modal from "./Modal.tsx";
+import styles from "./PostList.module.css";
+import Post from "./Post.tsx";
 import { useState } from "react";
 
 interface PostListProps {
@@ -25,6 +27,19 @@ function PostList({ isPosting, onStopPosting }: PostListProps) {
         <Modal onClose={onStopPosting}>
           <NewPost onCancel={onStopPosting} onAddPost={addPostsHandler} />
         </Modal>
+      )}
+      {posts.length > 0 && (
+        <ul className={styles.posts}>
+          {posts.map((post) => (
+            <Post author={post.author} key={post.body} body={post.body} />
+          ))}
+        </ul>
+      )}
+      {posts.length === 0 && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <h2>The are no posts yet</h2>
+          <p>Start adding some</p>
+        </div>
       )}
     </>
   );
