@@ -2,7 +2,7 @@ import NewPost from "./NewPost.tsx";
 import Modal from "./Modal.tsx";
 import styles from "./PostList.module.css";
 import Post from "./Post.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface PostListProps {
   isPosting: boolean;
@@ -16,6 +16,15 @@ interface PostData {
 
 function PostList({ isPosting, onStopPosting }: PostListProps) {
   const [posts, setPosts] = useState<PostData[]>([]);
+
+  useEffect(() => {
+    async function fetchPost() {
+      const response = await fetch("http://local8080/posts");
+      const resData = await response.json();
+      setPosts(resData.posts);
+    }
+    fetchPost();
+  }, []);
 
   function addPostsHandler(postData: PostData) {
     fetch("http://localhost:8080/posts", {
