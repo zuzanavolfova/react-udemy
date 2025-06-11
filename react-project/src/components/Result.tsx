@@ -1,10 +1,8 @@
 function Result() {
-  function getRandomBoolean() {
-    return Math.random() < 0.5;
-  }
+  const randomResult = Math.random() < 0.5;
 
-  const answText = getRandomBoolean() ? "Good" : "Wrong";
-  const answColor = answText === "Good" ? "green" : "red";
+  const answText = randomResult ? "Good" : "Wrong";
+  const answColor = randomResult ? "green" : "red";
 
   return (
     <>
