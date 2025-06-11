@@ -3,6 +3,7 @@ import PostList from "./components/PostList/PostList.tsx";
 import MainHeader from "./components/Header/MainHeader.tsx";
 import { CORE_CONCEPTS } from "./data.ts";
 import TabButton from "./components/TabButton.tsx";
+import { EXAMPLES } from "./data-examples.tsx";
 
 interface LearnProps {
   title: string;
