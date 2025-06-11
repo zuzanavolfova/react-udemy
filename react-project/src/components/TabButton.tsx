@@ -2,12 +2,14 @@ import React from "react";
 
 interface TabButtonProps {
   children: React.ReactNode;
+  onSelect: () => void;
 }
 
-export default function TabButton({ children }: TabButtonProps) {
+export default function TabButton({ children, onSelect }: TabButtonProps) {
+    
   return (
     <li>
-      <button>{children}</button>
+      <button onClick={onSelect}>{children}</button>
     </li>
   );
 }

@@ -19,7 +19,10 @@ function LearnProps({ title, description }: LearnProps) {
   );
 }
 
+type ExampleKey = keyof typeof EXAMPLES;
+
 function App() {
+  const [selectedTopic, setSelectedTopic] = useState<ExampleKey>("components");
   const [modalIsVisible, setModalIsVisible] = useState(false);
 
   function hideModalHandler() {
@@ -28,6 +31,10 @@ function App() {
 
   function showModalHandler() {
     setModalIsVisible(true);
+  }
+
+  function handleSelect(selectedTab: ExampleKey) {
+    setSelectedTopic(selectedTab);
   }
 
   return (
@@ -49,11 +56,20 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Component</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={() => handleSelect("components")}>
+              Component
+            </TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </>
