@@ -32,7 +32,14 @@ function App() {
     <>
       <MainHeader onCreatePost={showModalHandler} />
       <main>
-        <PostList isPosting={modalIsVisible} onStopPosting={hideModalHandler} />
+        <section style={{ borderBottom: "1px solid #ccc" }}>
+          <PostList
+            isPosting={modalIsVisible}
+            onStopPosting={hideModalHandler}
+          />
+        </section>
+        <section>
+          <h2>Props learning</h2>
         <LearnProps {...CORE_CONCEPTS[0]}></LearnProps>
         <LearnProps {...CORE_CONCEPTS[1]}></LearnProps>
         <LearnProps title="hi" description="pozdrav AJ"></LearnProps>
