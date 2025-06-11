@@ -1,7 +1,7 @@
-import NewPost from "./NewPost.tsx";
-import Modal from "./Modal.tsx";
+import NewPost from "../NewPost/NewPost.tsx";
+import Modal from "../Modal/Modal.tsx";
 import styles from "./PostList.module.css";
-import Post from "./Post.tsx";
+import Post from "../Post/Post.tsx";
 import { useState } from "react";
 
 interface PostListProps {
