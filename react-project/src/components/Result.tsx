@@ -3,12 +3,12 @@ function Result() {
     return Math.random() < 0.5;
   }
 
-  const isGoodAnsw = getRandomBoolean();
+  const answText = getRandomBoolean() ? "Good" : "Wrong";
+  const answColor = answText === "Good" ? "green" : "red";
 
   return (
     <>
-      {!isGoodAnsw && <span style={{ color: "red" }}>Wrong answer</span>}
-      {isGoodAnsw && <span style={{ color: "green" }}>Good answer</span>}
+      <span style={{ color: answColor }}> {answText} answer</span>
     </>
   );
 }
