@@ -2,6 +2,7 @@ import { useState } from "react";
 import PostList from "./components/PostList/PostList.tsx";
 import MainHeader from "./components/Header/MainHeader.tsx";
 import { CORE_CONCEPTS } from "./data.ts";
+import TabButton from "./components/TabButton.tsx";
 
 interface LearnProps {
   title: string;
@@ -40,9 +41,19 @@ function App() {
         </section>
         <section>
           <h2>Props learning</h2>
-        <LearnProps {...CORE_CONCEPTS[0]}></LearnProps>
-        <LearnProps {...CORE_CONCEPTS[1]}></LearnProps>
-        <LearnProps title="hi" description="pozdrav AJ"></LearnProps>
+          <LearnProps {...CORE_CONCEPTS[0]}></LearnProps>
+          <LearnProps {...CORE_CONCEPTS[1]}></LearnProps>
+          <LearnProps title="hi" description="pozdrav AJ"></LearnProps>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Component</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
+        </section>
       </main>
     </>
   );
