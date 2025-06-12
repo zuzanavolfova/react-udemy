@@ -3,13 +3,19 @@ import React from "react";
 interface TabButtonProps {
   children: React.ReactNode;
   onSelect: () => void;
+  isSelected?: boolean;
 }
 
-export default function TabButton({ children, onSelect }: TabButtonProps) {
-    
+export default function TabButton({
+  children,
+  onSelect,
+  isSelected,
+}: TabButtonProps) {
   return (
     <li>
-      <button onClick={onSelect}>{children}</button>
+      <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+        {children}
+      </button>
     </li>
   );
 }
