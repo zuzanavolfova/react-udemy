@@ -49,9 +49,12 @@ function App() {
         </section>
         <section>
           <h2>Props learning</h2>
-          <LearnProps {...CORE_CONCEPTS[0]}></LearnProps>
-          <LearnProps {...CORE_CONCEPTS[1]}></LearnProps>
-          <LearnProps title="hi" description="pozdrav AJ"></LearnProps>
+          {CORE_CONCEPTS.map((item) => (
+            <LearnProps
+              key={item.title}
+              {...item}
+            ></LearnProps>
+          ))}
         </section>
         <section id="examples">
           <h2>Examples</h2>
