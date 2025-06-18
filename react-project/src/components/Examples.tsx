@@ -1,19 +1,19 @@
 import { useState } from "react";
 import TabButton from "./TabButton.tsx";
 import { EXAMPLES } from "./../data-examples.tsx";
+import Section from "./Section.tsx";
 
 type ExampleKey = keyof typeof EXAMPLES;
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState<ExampleKey>();
-  
+
   function handleSelect(selectedTab: ExampleKey) {
     setSelectedTopic(selectedTab);
   }
 
   return (
-    <section id="examples">
-      <h2>Examples</h2>
+    <Section title="examples">
       <menu>
         <TabButton
           isSelected={selectedTopic === "components"}
@@ -51,6 +51,6 @@ export default function Examples() {
           </pre>
         </div>
       )}
-    </section>
+    </Section>
   );
 }
