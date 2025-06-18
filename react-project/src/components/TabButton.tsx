@@ -2,18 +2,18 @@ import React from "react";
 
 interface TabButtonProps {
   children: React.ReactNode;
-  onSelect: () => void;
   isSelected?: boolean;
+  [key: string]: any;
 }
 
 export default function TabButton({
   children,
-  onSelect,
   isSelected,
+  ...props
 }: TabButtonProps) {
   return (
     <li>
-      <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+      <button className={isSelected ? "active" : undefined} {...props}>
         {children}
       </button>
     </li>
