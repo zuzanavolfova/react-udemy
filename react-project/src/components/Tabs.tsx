@@ -1,11 +1,11 @@
 export default function Tabs({
   children,
   buttons,
-  ButtonsContainer,
+  ButtonsContainer = "menu",
 }: {
   children: React.ReactNode;
   buttons: React.ReactNode;
-  ButtonsContainer: React.ElementType | string;
+  ButtonsContainer?: React.ElementType | string;
 }) {
   return (
     <>
