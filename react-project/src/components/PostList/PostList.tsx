@@ -3,6 +3,18 @@ import Modal from "../Modal/Modal.tsx";
 import styles from "./PostList.module.css";
 import Post from "../Post/Post.tsx";
 import { useState } from "react";
+import { styled } from "styled-components";
+
+const StyledPostList = styled.ul`
+  list-style: none;
+  max-width: 50rem;
+  margin: 1rem auto;
+  padding: 1rem 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 30%);
+  justify-content: center;
+`;
 
 interface PostListProps {
   isPosting: boolean;
@@ -29,11 +41,11 @@ function PostList({ isPosting, onStopPosting }: PostListProps) {
         </Modal>
       )}
       {posts.length > 0 && (
-        <ul className={styles.posts}>
+        <StyledPostList className={styles.posts}>
           {posts.map((post) => (
             <Post author={post.author} key={post.body} body={post.body} />
           ))}
-        </ul>
+        </StyledPostList>
       )}
       {posts.length === 0 && (
         <div style={{ textAlign: "center", color: "white" }}>
